@@ -27,9 +27,9 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      {/* Verification Banner */}
+      {/* Top Banner - Verification Status */}
       {!user.isVerified && (
-        <div className="dashboard-card">
+        <div className="dashboard-banner">
           <div className="alert alert-warning verification-banner">
             <div>
               <strong>⚠️ Email not verified</strong>
@@ -51,45 +51,117 @@ function Dashboard() {
         </div>
       )}
 
-      {/* Verified Banner */}
       {user.isVerified && (
-        <div className="dashboard-card">
+        <div className="dashboard-banner">
           <div className="alert alert-success">
-            <strong>✅ Your email is validated.</strong>
-            <p>You can access the full portal.</p>
+            <strong>✅ Your email is verified!</strong>
+            <p>You have full access to all portal features.</p>
           </div>
         </div>
       )}
 
-      {/* User Info */}
-      <div className="dashboard-card">
-        <h2>Welcome to your Dashboard</h2>
-        <div className="user-info">
-          <span>Email</span>
-          <strong>{user.email}</strong>
+      {/* Dashboard Grid Layout */}
+      <div className="dashboard-grid">
+        {/* User Profile Card */}
+        <div className="dashboard-card profile-card">
+          <div className="card-header">
+            <h2>👋 Welcome Back</h2>
+          </div>
+          <div className="card-content">
+            <div className="info-box">
+              <span className="info-label">Email</span>
+              <strong className="info-value">{user.email}</strong>
+            </div>
+            <div className="info-box">
+              <span className="info-label">Account Status</span>
+              <span
+                className={`status-badge ${
+                  user.isVerified ? 'status-verified' : 'status-unverified'
+                }`}
+              >
+                {user.isVerified ? 'Verified' : 'Pending Verification'}
+              </span>
+            </div>
+          </div>
         </div>
-        <div className="user-info" style={{ marginTop: '1rem' }}>
-          <span>Account Status</span>
-          <span
-            className={`status-badge ${
-              user.isVerified ? 'status-verified' : 'status-unverified'
-            }`}
-          >
-            {user.isVerified ? 'Verified' : 'Pending Verification'}
-          </span>
+
+        {/* Quick Stats Card */}
+        <div className="dashboard-card stats-card">
+          <div className="card-header">
+            <h2>📊 Quick Stats</h2>
+          </div>
+          <div className="card-content">
+            <div className="stat-item">
+              <div className="stat-icon">🎯</div>
+              <div className="stat-info">
+                <span className="stat-label">Status</span>
+                <span className="stat-value">{user.isVerified ? 'Active' : 'Pending'}</span>
+              </div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-icon">📧</div>
+              <div className="stat-info">
+                <span className="stat-label">Email Status</span>
+                <span className="stat-value">{user.isVerified ? 'Verified' : 'Unverified'}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Protected Content Card */}
+        {user.isVerified && (
+          <div className="dashboard-card content-card">
+            <div className="card-header">
+              <h2>🎉 Protected Content</h2>
+            </div>
+            <div className="card-content">
+              <p>
+                This section is only visible to verified users. You now have full
+                access to all portal features and can explore everything we have to offer.
+              </p>
+              <div className="feature-list">
+                <div className="feature-item">
+                  <span className="feature-icon">✓</span>
+                  <span>Full API Access</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-icon">✓</span>
+                  <span>Premium Features</span>
+                </div>
+                <div className="feature-item">
+                  <span className="feature-icon">✓</span>
+                  <span>Priority Support</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Activity Card */}
+        <div className="dashboard-card activity-card">
+          <div className="card-header">
+            <h2>📈 Recent Activity</h2>
+          </div>
+          <div className="card-content">
+            <div className="activity-item">
+              <div className="activity-dot"></div>
+              <div className="activity-info">
+                <span className="activity-title">Account Created</span>
+                <span className="activity-time">Recently</span>
+              </div>
+            </div>
+            {user.isVerified && (
+              <div className="activity-item">
+                <div className="activity-dot verified"></div>
+                <div className="activity-info">
+                  <span className="activity-title">Email Verified</span>
+                  <span className="activity-time">Completed</span>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-
-      {/* Protected Content */}
-      {user.isVerified && (
-        <div className="dashboard-card">
-          <h2>Protected Content</h2>
-          <p>
-            This section is only visible to verified users. You now have full
-            access to all portal features.
-          </p>
-        </div>
-      )}
     </div>
   );
 }

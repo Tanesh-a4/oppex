@@ -44,9 +44,9 @@ function Signup() {
 
   return (
     <div className="form-container">
-      <h2>Create Account</h2>
+      <h2>🚀 Create Account</h2>
 
-      {error && <div className="alert alert-error">{error}</div>}
+      {error && <div className="alert alert-error">⚠️ {error}</div>}
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
