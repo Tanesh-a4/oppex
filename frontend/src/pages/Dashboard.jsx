@@ -65,7 +65,7 @@ function Dashboard() {
         {/* User Profile Card */}
         <div className="dashboard-card profile-card">
           <div className="card-header">
-            <h2>👋 Welcome Back</h2>
+            <h2> Welcome Back</h2>
           </div>
           <div className="card-content">
             <div className="info-box">
@@ -88,7 +88,7 @@ function Dashboard() {
         {/* Quick Stats Card */}
         <div className="dashboard-card stats-card">
           <div className="card-header">
-            <h2>📊 Quick Stats</h2>
+            <h2>Quick Stats</h2>
           </div>
           <div className="card-content">
             <div className="stat-item">
@@ -140,7 +140,7 @@ function Dashboard() {
         {/* Activity Card */}
         <div className="dashboard-card activity-card">
           <div className="card-header">
-            <h2>📈 Recent Activity</h2>
+            <h2>Recent Activity</h2>
           </div>
           <div className="card-content">
             <div className="activity-item">

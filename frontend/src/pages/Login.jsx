@@ -31,7 +31,7 @@ function Login() {
 
   return (
     <div className="form-container">
-      <h2>✨ Welcome Back</h2>
+      <h2> Welcome Back</h2>
 
       {error && <div className="alert alert-error">⚠️ {error}</div>}
 
